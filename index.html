@@ -9,9 +9,119 @@
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128330;</text></svg>">
+    <style>
+        /* Registration Overlay */
+        .registration-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10, 15, 13, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+        .registration-overlay.hidden {
+            display: none;
+        }
+        .registration-box {
+            background: #111a15;
+            border: 1px solid #1f3d2e;
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .registration-icon {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, #1a5c3a, #c9a84c);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 36px; margin: 0 auto 20px;
+            box-shadow: 0 0 30px rgba(26, 92, 58, 0.3);
+        }
+        .registration-title {
+            font-size: 24px; font-weight: 800;
+            background: linear-gradient(135deg, #c9a84c, #e8d5a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .registration-subtitle {
+            font-size: 13px; color: #5a7a6a; margin-bottom: 8px;
+        }
+        .registration-desc {
+            font-size: 14px; color: #8fa89a; margin-bottom: 24px;
+        }
+        .registration-form { text-align: right; }
+        .reg-group { margin-bottom: 16px; }
+        .reg-group label {
+            display: block; font-size: 13px; font-weight: 600;
+            color: #e8f0ec; margin-bottom: 6px;
+        }
+        .reg-input {
+            width: 100%; padding: 12px 16px;
+            background: #1a2620; border: 1px solid #1f3d2e;
+            border-radius: 8px; color: #e8f0ec;
+            font-family: inherit; font-size: 14px;
+            outline: none; transition: all 0.3s ease;
+        }
+        .reg-input:focus {
+            border-color: #c9a84c;
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+        }
+        .reg-input::placeholder { color: #5a7a6a; }
+        .reg-error {
+            color: #e74c3c; font-size: 13px;
+            margin-bottom: 12px; min-height: 20px;
+        }
+        .reg-btn {
+            width: 100%; padding: 14px;
+            background: linear-gradient(135deg, #1a5c3a, #2d8a5e);
+            border: none; border-radius: 8px;
+            color: white; font-family: inherit;
+            font-size: 15px; font-weight: 700;
+            cursor: pointer; transition: all 0.3s ease;
+        }
+        .reg-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 92, 58, 0.4);
+        }
+        .reg-footer {
+            margin-top: 20px; font-size: 12px;
+            color: #5a7a6a;
+        }
+    </style>
 </head>
 <body>
-    <div class="app-container">
+        <!-- USER REGISTRATION OVERLAY -->
+    <div class="registration-overlay" id="registration-overlay">
+        <div class="registration-box">
+            <div class="registration-icon">&#128330;</div>
+            <div class="registration-title">به اوای یقین خوش آمدید</div>
+            <div class="registration-subtitle">دستیار هوشمند مسجد حضرت ابوالفضل (ع)</div>
+            <div class="registration-desc">لطفا برای شروع گفتگو، اطلاعات خود را وارد کنید:</div>
+            <div class="registration-form">
+                <div class="reg-group">
+                    <label>نام و نام خانوادگی</label>
+                    <input type="text" class="reg-input" id="reg-name" placeholder="مثال: محمد رضایی">
+                </div>
+                <div class="reg-group">
+                    <label>شماره تماس</label>
+                    <input type="tel" class="reg-input" id="reg-phone" placeholder="مثال: 09123456789">
+                </div>
+                <div class="reg-error" id="reg-error"></div>
+                <button class="reg-btn" id="reg-btn" type="button">ثبت و شروع گفتگو</button>
+            </div>
+            <div class="reg-footer">
+                مسجد حضرت ابوالفضل (ع) - رودان، هرمزگان
+            </div>
+        </div>
+    </div>
+
+<div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
