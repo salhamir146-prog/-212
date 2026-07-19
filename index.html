@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اوای یقین - دستیار هوشمند مسجد حضرت ابوالفضل (ع)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128330;</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-icon">&#128330;</div>
+                    <div class="logo-text">اوای یقین</div>
+                </div>
+                <div class="logo-subtitle">دستیار هوشمند مسجد حضرت ابوالفضل (ع)</div>
+            </div>
+            <button class="new-chat-btn" id="new-chat-btn" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+                گفتگوی جدید
+            </button>
+            <div class="chat-history" id="chat-history">
+                <div class="history-title">تاریخچه گفتگوها</div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="footer-info">طراحی و توسعه: امیر صالح جاودان</div>
+                <div class="footer-info">زیر نظر: قرارگاه فرهنگی 313</div>
+                <div class="footer-info">مسجد حضرت ابوالفضل (ع) - رودان، هرمزگان</div>
+            </div>
+        </aside>
+        <!-- Main Chat Area -->
+        <main class="main-area">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="منو">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <line x1="3" y1="18" x2="21" y2="18"/>
+                        </svg>
+                    </button>
+                    <button class="model-selector" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4"/>
+                            <path d="M12 8h.01"/>
+                        </svg>
+                        اوای یقین
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="top-bar-right">
+                    <!-- Admin access only through chat password -->
+                </div>
+            </header>
+            <div class="chat-container" id="chat-container">
+                <div class="welcome-screen" id="welcome-screen">
+                    <div class="welcome-logo">&#128330;</div>
+                    <h1 class="welcome-title">اوای یقین</h1>
+                    <p class="welcome-subtitle">دستیار هوشمند مسجد حضرت ابوالفضل (ع)</p>
+                    <div class="suggestion-cards">
+                        <div class="suggestion-card">
+                            <div class="suggestion-card-title">احکام نماز را به من بگو</div>
+                            <div class="suggestion-card-desc">شرایط، ارکان و احکام نماز</div>
+                        </div>
+                        <div class="suggestion-card">
+                            <div class="suggestion-card-title">دعای روزانه معرفی کن</div>
+                            <div class="suggestion-card-desc">دعاهای مخصوص صبح و شب</div>
+                        </div>
+                        <div class="suggestion-card">
+                            <div class="suggestion-card-title">آیه 255 بقره را تفسیر کن</div>
+                            <div class="suggestion-card-desc">تفسیر آیه الکرسی</div>
+                        </div>
+                        <div class="suggestion-card">
+                            <div class="suggestion-card-title">داستان زندگی امام علی</div>
+                            <div class="suggestion-card-desc">سیره اهل بیت (ع)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea class="chat-input" id="chat-input" placeholder="پیام خود را بنویسید..." rows="1"></textarea>
+                    <div class="input-actions">
+                        <button class="send-btn" id="send-btn" type="button" aria-label="ارسال">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="input-footer">
+                    اوای یقین می تواند اشتباه کند. لطفا برای احکام شرعی به مراجع معتبر مراجعه کنید.
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/config.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>
