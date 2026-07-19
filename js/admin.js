@@ -196,8 +196,15 @@
             }
             if (!preview) preview = 'بدون عنوان';
 
+            var userName = chat.userName || 'ناشناس';
+            var userPhone = chat.userPhone || 'شماره ثبت نشده';
+
             html += '<div class="chat-card">' +
                 '<div class="chat-card-header"><div class="chat-card-title">' + escapeHtml(chat.title || 'گفتگوی بدون عنوان') + '</div><div class="chat-card-date">' + date + '</div></div>' +
+                '<div class="chat-card-user-info">' +
+                '<span class="user-badge user-name">&#128100; ' + escapeHtml(userName) + '</span>' +
+                '<span class="user-badge user-phone">&#128222; ' + escapeHtml(userPhone) + '</span>' +
+                '</div>' +
                 '<div class="chat-card-preview">' + escapeHtml(preview) + '</div>' +
                 '<div class="chat-card-footer"><span class="chat-card-count">' + messageCount + ' پیام</span>' +
                 '<div class="chat-card-actions">' +
