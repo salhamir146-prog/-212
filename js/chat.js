@@ -10,12 +10,31 @@
     let currentChatId = null;
     let isTyping = false;
     let chatHistory = [];
+    let userInfo = { name: '', phone: '' };
 
     // DOM Elements
     let chatContainer, chatInput, sendBtn, newChatBtn, sidebar, menuToggle, chatHistoryEl, welcomeScreen;
 
     // Initialize when DOM is ready
     function init() {
+        // Check if user is registered
+        try {
+            var savedUser = localStorage.getItem('oay_user_info');
+            if (savedUser) {
+                userInfo = JSON.parse(savedUser);
+            }
+        } catch(e) {
+            userInfo = { name: '', phone: '' };
+        }
+
+        // Show registration if not registered
+        if (!userInfo.name || !userInfo.phone) {
+            showRegistration();
+            return;
+        }
+
+        hideRegistration();
+
         // Get DOM elements
         chatContainer = document.getElementById('chat-container');
         chatInput = document.getElementById('chat-input');
@@ -28,7 +47,7 @@
 
         // Load history from localStorage
         try {
-            const saved = localStorage.getItem('oay_chats');
+            var saved = localStorage.getItem('oay_chats');
             if (saved) chatHistory = JSON.parse(saved);
         } catch(e) {
             chatHistory = [];
@@ -39,6 +58,55 @@
 
         // Render history
         renderChatHistory();
+    }
+
+    function showRegistration() {
+        var overlay = document.getElementById('registration-overlay');
+        if (overlay) overlay.classList.remove('hidden');
+
+        var regBtn = document.getElementById('reg-btn');
+        var regName = document.getElementById('reg-name');
+        var regPhone = document.getElementById('reg-phone');
+        var regError = document.getElementById('reg-error');
+
+        if (regBtn) {
+            regBtn.addEventListener('click', function() {
+                var name = regName.value.trim();
+                var phone = regPhone.value.trim();
+
+                if (!name) {
+                    regError.textContent = 'لطفا نام و نام خانوادگی خود را وارد کنید';
+                    return;
+                }
+                if (!phone) {
+                    regError.textContent = 'لطفا شماره تماس خود را وارد کنید';
+                    return;
+                }
+                if (phone.length < 10) {
+                    regError.textContent = 'شماره تماس معتبر نیست';
+                    return;
+                }
+
+                userInfo = { name: name, phone: phone };
+                localStorage.setItem('oay_user_info', JSON.stringify(userInfo));
+
+                hideRegistration();
+                init();
+            });
+        }
+
+        if (regPhone) {
+            regPhone.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    if (regBtn) regBtn.click();
+                }
+            });
+        }
+    }
+
+    function hideRegistration() {
+        var overlay = document.getElementById('registration-overlay');
+        if (overlay) overlay.classList.add('hidden');
     }
 
     function bindEvents() {
@@ -279,7 +347,9 @@
             id: currentChatId,
             title: getChatTitle(),
             messages: messages,
-            timestamp: Date.now()
+            timestamp: Date.now(),
+            userName: userInfo.name,
+            userPhone: userInfo.phone
         };
 
         var existingIndex = -1;
