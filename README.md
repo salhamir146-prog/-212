@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/30170142/README.md)
 # 🕌 اوای یقین - دستیار هوشمند مسجد حضرت ابوالفضل (ع)
 
 <div align="center">
